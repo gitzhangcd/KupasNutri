@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gitzhangcd/KupasNutri/schemas/applicability_object.schema.json",
+  "title": "MNC ApplicabilityObject",
+  "type": "object",
+  "required": ["applicability_id","target_ref","target_type","population","measurement_requirements","evidence_scope","decision_gate","prohibited_inferences","version"],
+  "properties": {
+    "applicability_id": {"type": "string"},
+    "target_ref": {"type": "string"},
+    "target_type": {"enum": ["scientific_claim","interaction_claim"]},
+    "population": {
+      "type": "object",
+      "properties": {
+        "age_group": {"type": ["string","null"]},
+        "sex_or_reproductive_state": {"type": ["string","null"]},
+        "disease_state": {"type": ["string","null"]},
+        "physiological_state": {"type": ["string","null"]},
+        "activity_context": {"type": ["string","null"]}
+      },
+      "additionalProperties": false
+    },
+    "measurement_requirements": {
+      "type": "object",
+      "properties": {
+        "required_nutrient_form": {"type": ["string","null"]},
+        "required_basis": {"type": ["string","null"]},
+        "required_denominator": {"type": ["string","null"]},
+        "required_interacting_exposures": {"type": "array","items": {"type": "string"}},
+        "required_person_context": {"type": "array","items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "evidence_scope": {
+      "type": "object",
+      "properties": {
+        "allowed_inference_level": {"type": "string"},
+        "endpoint_type": {"type": "string"},
+        "evidence_strength": {"type": "string"},
+        "uncertainty": {"type": "string"}
+      },
+      "required": ["allowed_inference_level","endpoint_type","evidence_strength","uncertainty"]
+    },
+    "decision_gate": {
+      "type": "object",
+      "properties": {
+        "if_context_complete": {"type": "string"},
+        "if_context_missing": {"type": "string"},
+        "if_measurement_semantics_unresolved": {"type": "string"}
+      },
+      "required": ["if_context_complete","if_context_missing","if_measurement_semantics_unresolved"]
+    },
+    "prohibited_inferences": {"type": "array","items": {"type": "string"}},
+    "version": {"type": "string"}
+  },
+  "additionalProperties": false
+}
