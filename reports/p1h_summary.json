@@ -1,0 +1,18 @@
+{
+  "version": "P1-H-v0.1",
+  "n_dishes": 100,
+  "exposure_families": 4,
+  "scientific_claims": 7,
+  "evidence_bundles": 4,
+  "evidence_units": 8,
+  "dish_exposure_slots": 400,
+  "evidence_linked_edges": 394,
+  "blocked_missing_observation_edges": 6,
+  "health_task_seed_instances": 788,
+  "t6_provisional_eligible_dishes": 100,
+  "t7_provisional_eligible_dishes": 100,
+  "lineage_errors": 0,
+  "thresholding_allowed": false,
+  "personalized_recommendation_allowed": false,
+  "decision": "PASS_FOR_H1_POPULATION_EVIDENCE_LINKAGE; HOLD_FOR_DOSE_THRESHOLDING_AND_PERSONALIZED_RECOMMENDATION"
+}
