@@ -1,0 +1,5 @@
+exposure_id,canonical_name,nutrient_name,desc,canonical_unit,coverage_expected,health_domains,primary_claim_refs,evidence_bundle_ref,linkage_scope
+EXP-SODIUM,Dietary sodium,Na,钠,mg,100/100,blood_pressure;cardiovascular,CLM-SOD-BP-001;CLM-SOD-REC-002,EB-SODIUM-001,composition_to_population_evidence
+EXP-POTASSIUM,Dietary potassium,Kalium,钾,mg,100/100,blood_pressure;cardiovascular,CLM-POT-BP-001,EB-POTASSIUM-001,composition_to_population_evidence
+EXP-FIBER,Dietary fibre,DietaryFiber,膳食纤维,g,100/100,cardiovascular;type_2_diabetes;colorectal_cancer;metabolic_risk,CLM-FIBER-NCD-001;CLM-FIBER-REC-002,EB-FIBER-001,composition_to_population_evidence
+EXP-SFA,Saturated fatty acids,Sfa,饱和脂肪酸,g,94/100,cardiovascular;lipids,CLM-SFA-CVD-001;CLM-SFA-REC-002,EB-SFA-001,composition_to_population_evidence
