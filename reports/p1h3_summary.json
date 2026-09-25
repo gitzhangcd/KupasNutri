@@ -1,0 +1,25 @@
+{
+  "version": "P1-H3-v0.1",
+  "n_dishes": 100,
+  "gold100_items": 100,
+  "gold_status": "evidence_locked_gold_candidate_pending_human_adjudication",
+  "qa_family_counts": {
+    "FOLATE_B12_SEMANTIC": 10,
+    "IRON_VITC_INTERACTION": 15,
+    "SFA_CHOL_INTERACTION": 15,
+    "PURINE_GOUT": 10,
+    "SODIUM_POTASSIUM_INTERACTION": 20,
+    "CALCIUM_VITD_CONFLICT": 10,
+    "PROTEIN_ACTIVITY": 10,
+    "IRON_PREGNANCY": 10
+  },
+  "population_evidence_fixtures": 8,
+  "cross_exposure_interactions": 5,
+  "applicability_objects": 23,
+  "applicability_schema_validation_pass": 23,
+  "claim_reference_errors": 0,
+  "evidence_reference_errors": 0,
+  "personalized_recommendation_items_allowed": 0,
+  "measurement_basis": "unresolved_api_base_profile",
+  "decision": "PASS_APPLICABILITY_OBJECTS_AND_GOLD100_CONSTRUCTION; HOLD_HUMAN_ADJUDICATION_AND_H2_DOSE_THRESHOLDING"
+}
