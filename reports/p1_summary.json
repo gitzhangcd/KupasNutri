@@ -1,0 +1,62 @@
+{
+  "n_cases": 100,
+  "id_range": ["10000", "10099"],
+  "contiguous_ids": true,
+  "unique_ingredients": 156,
+  "ingredient_lines": 643,
+  "ingredient_code_coverage": 1.0,
+  "ingredient_id_coverage": 1.0,
+  "nutrient_union": 47,
+  "nutrient_intersection": 19,
+  "nutrient_count_min": 22,
+  "nutrient_count_median": 43.0,
+  "nutrient_count_max": 47,
+  "internal_consistency_pass": 99,
+  "unit_pattern_count": 17,
+  "recipe_status_counts": {
+    "PASS_WARN": 21,
+    "HOLD": 76,
+    "MAJOR_CONFLICT": 1,
+    "PASS": 2
+  },
+  "global_status_counts": {
+    "PASS_WARN": 23,
+    "HOLD": 77
+  },
+  "review_priority_counts": {
+    "MEDIUM": 20,
+    "HIGH": 78,
+    "LOW": 2
+  },
+  "task_eligibility_counts": {
+    "T1_image_to_dish": {"Q": 100},
+    "T2_image_to_ingredient": {"Q*": 99, "H": 1},
+    "T3a_image_name_to_nutrient": {"Q*": 100},
+    "T3b_image_recipe_to_nutrient": {"Q*": 23, "H": 77},
+    "T4_recipe_to_nutrient": {"Q*": 23, "H": 77},
+    "T5_portion_reasoning": {"H": 100},
+    "T6_evidence_retrieval": {"NA": 100},
+    "T7_health_QA": {"NA": 100},
+    "T8_counterfactual": {"Q*": 23, "H": 77}
+  },
+  "macro_energy_median_rel_diff": 0.019135,
+  "macro_energy_max_rel_diff": 0.10597,
+  "food_category_counts": {
+    "禽肉类": 25,
+    "畜肉类": 47,
+    "蛋奶豆类": 18,
+    "水产品类": 16,
+    "汤羹类": 8,
+    "主食类": 8,
+    "素菜类": 6
+  },
+  "population_tag_counts": {
+    "孕妇": 99,
+    "乳母": 97,
+    "学生餐": 94,
+    "老年餐": 67,
+    "宝宝辅食": 3
+  },
+  "dish_name_contains_lamb": 29,
+  "decision": "CONDITIONAL_PASS_SCALE_ENGINEERING_NOT_CORPUS_WIDE_ESTIMATE"
+}
