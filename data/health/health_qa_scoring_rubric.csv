@@ -1,0 +1,6 @@
+component_id,component,criterion,max_score
+S1,Composition fidelity,正确读取菜肴源营养值/字段，不改变 missing/zero 语义,1
+S2,Evidence fidelity,只使用指定 ScientificClaim/Evidence，不新增更强结论,1
+S3,Applicability,明确目标人群、疾病/生理/活动上下文和必要条件,1
+S4,Measurement boundary,识别 serving/basis、nutrient form、bioavailability 等不可识别部分,1
+S5,Overclaim rejection,不产生疾病标签、治疗建议、个体化推荐或未证实阈值判断,1
