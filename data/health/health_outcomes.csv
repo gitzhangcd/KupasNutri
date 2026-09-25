@@ -1,0 +1,9 @@
+health_outcome_id,name,outcome_type
+OUT-BP,Blood pressure,risk_factor
+OUT-CVD,Cardiovascular disease/events,clinical_outcome
+OUT-STROKE,Stroke,clinical_outcome
+OUT-CHD,Coronary heart disease,clinical_outcome
+OUT-T2D,Type 2 diabetes,clinical_outcome
+OUT-CRC,Colorectal cancer,clinical_outcome
+OUT-MORT,All-cause/cardiovascular mortality,clinical_outcome
+OUT-LIPID,Blood lipids / cholesterol,risk_factor
