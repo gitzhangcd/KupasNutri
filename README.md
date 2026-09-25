@@ -1,56 +1,76 @@
-# KupasNutri — MNC v0.1 P1 + P1-H
+# KupasNutri — MNC v0.1 P1 + P1-H + P1-H2
 
-This repository contains the executable qualification and first health-evidence linkage passes for the **Multimodal Nutrition Corpus (MNC) v0.1**.
+This repository contains the executable qualification and health-evidence linkage pipeline for the **Multimodal Nutrition Corpus (MNC) v0.1**.
 
 ## P1 — 100-case qualification
 
 - Source cases: dish IDs `10000–10099`
-- Batch size: 100 contiguous records
-- Purpose: schema qualification, source/API semantic audit, recipe–nutrition reconciliation screening, QC fixture estimation, and task-specific eligibility
-- Important: this is **not** a representative stratified sample of the full corpus.
+- 100/100 structurally parseable
+- 156 unique structured ingredients
+- 643 ingredient lines
+- Recipe screening: 23 provisional recipe-qualified, 77 HOLD
+- Decision: **CONDITIONAL PASS for scale engineering**
 
-### P1 decision
+This contiguous batch is not representative of the full corpus and must not be used as a corpus-wide admission-rate estimate.
 
-**CONDITIONAL PASS for scale engineering.**
+## P1-H — first population-level health linkage
 
-Do not extrapolate this batch's recipe-qualification rate to the full API corpus until a genuinely stratified P1-B batch and a human-reviewed reconciliation subset are completed.
+Frozen Gold-4:
 
-## P1-H — first health-evidence linkage
-
-P1-H adds the first operational:
-
-`Dish -> NutrientObservation -> ExposureEntity -> ScientificClaim -> EvidenceBundle -> EvidenceUnit -> Source`
-
-graph.
-
-First-wave Gold-4 exposures:
-
-- Dietary sodium
-- Dietary potassium
+- Sodium
+- Potassium
 - Dietary fibre
 - Saturated fatty acids
 
-Current P1-H results:
+Results:
 
-- 100 dishes
-- 400 Dish–Exposure slots
+- 400 candidate Dish–Exposure slots
 - 394 evidence-linked edges
-- 7 frozen ScientificClaims
+- 7 ScientificClaims
 - 4 EvidenceBundles
 - 8 EvidenceUnits
 - 788 provisional T6/T7 task seeds
 - evidence-lineage errors: 0
 
-### P1-H decision
+Decision: **PASS for H1 population-level evidence linkage.**
 
-**PASS for H1 population-level evidence linkage.**
+## P1-H2 — Exposure Expansion & Applicability Stress Test
 
-Still blocked:
+Added:
 
-- serving/dose thresholding;
-- dish-level disease labels;
-- individualized nutrition/medical recommendations;
-- ingredient-specific health attribution without ingredient-contribution modelling.
+- Protein
+- Calcium
+- Iron
+- Folate / source `FolicAcid`
+- Dietary cholesterol
+- Purine
+
+Results:
+
+- 600 new candidate Dish–Exposure slots
+- 590 observed nutrient edges
+- 495 new evidence-linked edges
+- 95 folate observations deliberately blocked by nutrient-form semantics
+- 10 source-missing edges
+- 11 new ScientificClaims
+- 6 new EvidenceBundles
+- 12 new EvidenceUnits
+- 990 new T6/T7 task seeds
+
+Cumulative health graph:
+
+- 100 dishes
+- 10 exposure families
+- 1,000 candidate slots
+- 889 evidence-linked edges
+- 18 ScientificClaims
+- 10 EvidenceBundles
+- 20 EvidenceUnits
+- 1,778 structured T6/T7 task seeds
+
+Decision: **PASS_APPLICABILITY_STRESS_TEST_WITH_FOLATE_SEMANTIC_KILL_SIGNAL**
+
+The folate block is intentional: the source field `FolicAcid` does not establish whether values represent natural food folate, synthetic folic acid, or dietary folate equivalents. The system therefore refuses to map those dish values to periconceptional NTD-prevention claims until source semantics are verified.
 
 ## Core scientific rules
 
@@ -61,9 +81,13 @@ Still blocked:
 5. `Dish-level quality != task-specific eligibility`
 6. `Evidence link != recommendation`
 7. `Batch percentile != clinical threshold`
-8. Automated reconciliation is screening, not expert adjudication
+8. `Population evidence != personalized advice`
+9. `Food folate != folic acid != DFE`
+10. Automated reconciliation is screening, not expert adjudication
 
-## Reproduce P1
+## Reproduce
+
+### P1
 
 ```bash
 python scripts/process_p1_100_cases.py \
@@ -71,7 +95,7 @@ python scripts/process_p1_100_cases.py \
   data/processed
 ```
 
-## Reproduce P1-H
+### P1-H
 
 ```bash
 python scripts/build_p1h_health_links.py \
@@ -81,26 +105,26 @@ python scripts/build_p1h_health_links.py \
   --out data/health/generated
 ```
 
-## Main outputs
+### P1-H2
 
-### P1
+```bash
+python scripts/build_p1h2_applicability_links.py \
+  --nutrients data/processed/nutrient_observations.csv \
+  --anchors data/processed/dish_anchors.csv \
+  --out data/health/generated_h2
+```
 
-- `reports/P1_100_case_qualification_report.md`
-- `reports/p1_summary.json`
-- `data/processed/p1_case_registry_min.csv`
-- `scripts/process_p1_100_cases.py`
-- `docs/MNC_v0.1_P1_processing_contract.md`
+## Main P1-H2 assets
 
-### P1-H
+- `reports/P1H2_exposure_expansion_applicability_report.md`
+- `reports/p1h2_summary.json`
+- `data/health/exposure_registry_h2.csv`
+- `data/health/scientific_claims_h2.csv`
+- `data/health/evidence_bundles_h2.csv`
+- `data/health/evidence_units_h2.csv`
+- `data/health/applicability_stress_matrix.csv`
+- `docs/MNC_v0.1_P1H2_applicability_contract.md`
+- `scripts/build_p1h2_applicability_links.py`
+- `data/health/P1H2_GENERATED_ARTIFACTS.md`
 
-- `reports/P1H_100_case_health_linkage_report.md`
-- `reports/p1h_summary.json`
-- `data/health/exposure_registry.csv`
-- `data/health/scientific_claims.csv`
-- `data/health/evidence_bundles.csv`
-- `data/health/evidence_units.csv`
-- `data/health/health_outcomes.csv`
-- `scripts/build_p1h_health_links.py`
-- `docs/MNC_v0.1_P1H_health_linkage_contract.md`
-
-Large normalized/generated tables are reproducible outputs and should not be hand-edited.
+Large per-dish generated tables are deterministic build outputs and should not be hand-edited.
