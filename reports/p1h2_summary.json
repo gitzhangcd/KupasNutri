@@ -1,0 +1,33 @@
+{
+  "version": "P1-H2-v0.1",
+  "n_dishes": 100,
+  "new_exposure_families": 6,
+  "new_dish_exposure_slots": 600,
+  "observed_exposure_edges": 590,
+  "evidence_linked_edges": 495,
+  "blocked_missing_observation_edges": 10,
+  "blocked_semantic_ambiguity_edges": 95,
+  "link_status_counts": {
+    "evidence_linked_applicability_constrained": 400,
+    "blocked_semantic_ambiguity": 95,
+    "blocked_missing_observation": 10,
+    "evidence_linked_population_restricted": 95
+  },
+  "coverage": {
+    "EXP-PROTEIN": 100,
+    "EXP-CALCIUM": 100,
+    "EXP-IRON": 100,
+    "EXP-FOLATE": 95,
+    "EXP-CHOLESTEROL": 100,
+    "EXP-PURINE": 95
+  },
+  "new_scientific_claims": 11,
+  "new_evidence_bundles": 6,
+  "new_evidence_units": 12,
+  "new_health_task_seeds": 990,
+  "cumulative_gold_or_stress_exposures": 10,
+  "cumulative_evidence_linked_edges_including_P1H": 889,
+  "cumulative_candidate_slots_including_P1H": 1000,
+  "cumulative_health_task_seeds_including_P1H": 1778,
+  "decision": "PASS_APPLICABILITY_STRESS_TEST_WITH_FOLATE_SEMANTIC_KILL_SIGNAL"
+}
